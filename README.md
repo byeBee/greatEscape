@@ -43,3 +43,8 @@ public String getListBySearch(Map<String, String> map) {
 		return sql.toString();
 	}
 ```
+*****
+# 고객센터
+![1 0-비로그인-faq](https://user-images.githubusercontent.com/107594290/189573281-df773a05-8eea-4102-8e82-ca63f56a5adf.png)
+- 헤더의 고객센터 클릭시 자주묻는질문 게시판으로 이동
+- 카테고리별로 버튼 클릭시 해당 내용만 나오도록 구성
