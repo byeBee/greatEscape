@@ -64,6 +64,7 @@ public String getListBySearch(Map<String, String> map) {
 - spring-security 에 의해 암호화된 비밀번호가 DB에 저장되므로 DB데이터로는 기존 비밀번호를 찾을수 없기 때문에 메일로 임시 비밀번호를 발송하여 그 번호로 로그인 후 회원이 직접 수정할수 있도록 구현 
 *****
 # 고객센터
+## 자주묻는질문
 ![1 0-비로그인-faq](https://user-images.githubusercontent.com/107594290/189573281-df773a05-8eea-4102-8e82-ca63f56a5adf.png)
 - 헤더의 고객센터 클릭시 자주묻는질문 게시판으로 이동
 ![메뉴이동](https://user-images.githubusercontent.com/107594290/189573647-3a3bed83-63fa-4a08-9aae-3851e5326d10.png)
@@ -73,3 +74,51 @@ public String getListBySearch(Map<String, String> map) {
 ![x클릭](https://user-images.githubusercontent.com/107594290/189574531-f8deca15-cddc-4e1a-8e07-bfb035d668ad.png)
 ![2 4faq삭제](https://user-images.githubusercontent.com/107594290/189574168-69151f75-10be-4f10-9f36-9986725670b4.png)
 - 관리자의 경우에만 게시글 추가, 삭제가 가능 [X]클릭시 Modal창을 띄워주고 삭제 클릭시 삭제
+## 질문과답변
+![질문답변](https://user-images.githubusercontent.com/107594290/189583251-d1413b36-5f6a-41ad-9f19-ccd59594b351.png)
+- selectbox에서 확인중, 답변완료를 선택하면 해당 글만 표시되도록 구현
+- 위에서 3개의 글까지는 공지사항을 최신순으로 보여주도록 구현
+- jstl function 라이브러리를 이용해 작성자의 이름을 처음과 끝글자만 표시되고, 가운데는 * 마스킹되도록 구현 
+- jstl formatter 라이브러리를 이용해 작성일을 요일까지만 표시(DB에서는 TIMESTAMP, java에서는 Date로 저장)
+![질문답변상세](https://user-images.githubusercontent.com/107594290/189584053-9666e33c-6ab8-4982-be55-427d0c30be97.png)
+![답변달린글](https://user-images.githubusercontent.com/107594290/189584368-099a800c-b593-4c09-b2aa-bcf08c1ad477.png)
+- 관리자의 경우에만 답글을 달수 있는 에디터가 표시되고, 등록을 클릭시 해당 글에 바로 표시되도록 AJAX를 통해 구현
++ Controller
+```java
+@PostMapping("comment")
+public String addComment(@RequestParam("qna_num")int qna_num, @RequestParam("qna_answer")String qna_answer,
+			@RequestParam("comment_writer")String comment_writer) throws Exception{
+	CommentVO vo= new CommentVO();
+	vo.setQna_num(qna_num);
+	vo.setQna_answer(qna_answer);
+	vo.setComment_writer(comment_writer);
+	bs.addComment(vo);
+	bs.updateQNAanswer(vo);
+	String redirectURL="redirect:qnaDetail?qna_num="+qna_num;
+	return redirectURL;
+}
+```
++ javascript
+```java
+function getCommentList(){
+		var qna_num= $('input[name=qna_num]').val();
+		$.ajax({
+			type: 'GET', url:"getCommentList", data:{"qna_num":qna_num},
+			beforeSend : function(xhr) { 
+				xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
+			}, success: function(result) {
+				for(var i=0; i<result.length; i++){
+					var str='<div class="comment">';
+					str += '관리자 답변';
+					str += '</div><div>&nbsp;&nbsp;&nbsp;';
+					str += result[i].qna_answer;
+					str += '</div><hr/>';
+					$("#commentList").append(str);
+				}
+			},error: function(err){
+				console.log(err);
+			} 
+		});//ajax			
+	}
+```
+## 공지사항
