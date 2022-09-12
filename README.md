@@ -1,6 +1,9 @@
 # greatEscape
 ### Springframework 기반 여행사 웹페이지 구현
-#### 프로젝트 개요
+#### 프로젝트 개발환경
++ Mybatis ORM 사용
++ spring-security 적용
++ Springframework
 ****
 
 ## 메인페이지
