@@ -49,4 +49,7 @@ public String getListBySearch(Map<String, String> map) {
 - 헤더의 고객센터 클릭시 자주묻는질문 게시판으로 이동
 ![메뉴이동](https://user-images.githubusercontent.com/107594290/189573647-3a3bed83-63fa-4a08-9aae-3851e5326d10.png)
 - 카테고리별로 버튼 클릭시 해당 내용만 나오도록 구성
-- 관리자계정으로 로그인한 경우에만 새롭게 글을 추가할수 있도록 jsp구현
+![1 4검색기능](https://user-images.githubusercontent.com/107594290/189574087-6f065915-d0ec-422d-a3f8-04e7b6adb26e.png)
+- 통합검색으로 FAQ제목과 내용 중 키워드가 포함되면 검색결과에 포함되도록 구현
+![2 4faq삭제](https://user-images.githubusercontent.com/107594290/189574168-69151f75-10be-4f10-9f36-9986725670b4.png)
+-관리자의 경우에만 게시글 추가,삭제가 가능
