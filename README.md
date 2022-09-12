@@ -1,5 +1,6 @@
 # greatEscape
 ### Springframework 기반 여행사 웹페이지 구현
+#### 프로젝트 개요
 ****
 
 ## 메인페이지
@@ -43,6 +44,15 @@ public String getListBySearch(Map<String, String> map) {
 		return sql.toString();
 	}
 ```
+*****
+# 회원관리
+## 로그인
+
+## 아이디비밀번호찾기 
+
+- 가입시 입력한 이메일을 통한 인증
+- 비밀번호의 경우 spring-
+## 
 *****
 # 고객센터
 ![1 0-비로그인-faq](https://user-images.githubusercontent.com/107594290/189573281-df773a05-8eea-4102-8e82-ca63f56a5adf.png)
