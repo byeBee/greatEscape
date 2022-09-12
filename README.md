@@ -126,6 +126,7 @@ function getCommentList(){
 ![로그인필요함](https://user-images.githubusercontent.com/107594290/189587552-2f67df08-c808-4203-9ee3-beb61421068e.png)
 - 비로그인시 로그인페이지로 이동
 ![질문쓰기](https://user-images.githubusercontent.com/107594290/189587947-0d80ae63-2b34-4b1e-84ff-bab56649e230.png)
+
 ![내가쓴글](https://user-images.githubusercontent.com/107594290/189587937-661cfc77-f20a-45c4-bb26-de7561687d2a.png)
 - 에디터를 사용해 글쓰기 구현
 - 로그인정보를 바탕으로 내가 쓴 질문만 
