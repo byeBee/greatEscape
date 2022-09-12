@@ -5,6 +5,7 @@
 + spring-security 적용
 + Springframework v5.3.21
 + My-SQL v8.0.29
++ STS 3.0 
 ****
 
 ## 메인페이지
@@ -14,39 +15,39 @@
 - 여행상품 검색에는 Provider를 이용해 동적쿼리를 구성하여 각각의 조건을 모두 고려할수 있게 구성
 ```java
 public String getListBySearch(Map<String, String> map) {
-		SQL sql = new SQL();
-		sql.SELECT("*");
-		sql.FROM("tbl_product");
-		String country = map.get("country");
-		if (country != null && !country.equals("")) {
-			sql.WHERE("product_country LIKE CONCAT('%', #{country}, '%')");
-		}
-		String departure = map.get("departure");
-		if (departure != null && !departure.equals("")) {
-			sql.WHERE("DATE(product_departure) = DATE(#{departure})");
-		}
-		String plan = map.get("plan");
-		if (plan != null && !plan.equals("")) {
-			sql.WHERE("product_plan = #{plan}");
-		}
-		String seat = map.get("seat");
-		if (seat != null && !seat.equals("")) {
-			sql.WHERE("(product_seat * 4) >= #{seat}");
-		}
-		String city = map.get("city");
-		if (city != null && !city.equals("")) {
-			sql.WHERE("product_city LIKE CONCAT('%', #{city}, '%')");
-		}
-		String money = map.get("money");
-		if (money != null && !money.equals("")) {
-			if (seat != null && !seat.equals("")) {
-				sql.WHERE("product_adult * #{seat} <= #{money}");
-			} else {
-				sql.WHERE("product_adult <= #{money}");
-			}
-		}
-		return sql.toString();
+	SQL sql = new SQL();
+	sql.SELECT("*");
+	sql.FROM("tbl_product");
+	String country = map.get("country");
+	if (country != null && !country.equals("")) {
+		sql.WHERE("product_country LIKE CONCAT('%', #{country}, '%')");
 	}
+	String departure = map.get("departure");
+	if (departure != null && !departure.equals("")) {
+		sql.WHERE("DATE(product_departure) = DATE(#{departure})");
+	}
+	String plan = map.get("plan");
+	if (plan != null && !plan.equals("")) {
+		sql.WHERE("product_plan = #{plan}");
+	}
+	String seat = map.get("seat");
+	if (seat != null && !seat.equals("")) {
+		sql.WHERE("(product_seat * 4) >= #{seat}");
+	}
+	String city = map.get("city");
+	if (city != null && !city.equals("")) {
+		sql.WHERE("product_city LIKE CONCAT('%', #{city}, '%')");
+	}
+	String money = map.get("money");
+	if (money != null && !money.equals("")) {
+		if (seat != null && !seat.equals("")) {
+			sql.WHERE("product_adult * #{seat} <= #{money}");
+		} else {
+			sql.WHERE("product_adult <= #{money}");
+		}
+	}
+	return sql.toString();
+}
 ```
 *****
 # 회원관리
@@ -56,12 +57,11 @@ public String getListBySearch(Map<String, String> map) {
 - DB에서 ID 중복검사및 비밀번호 등 유효성검사
 - DAUM 주소찾기 API 적용
 ## 아이디비밀번호찾기 
-
+### 아이디찾기
+![찾기결과](https://user-images.githubusercontent.com/107594290/189580154-d183ae1c-28ac-4389-b809-efa98e74bfdf.png)
+### 비밀번호 찾기
 ![비번찾기](https://user-images.githubusercontent.com/107594290/189579300-4fe5e649-2503-4b76-b9ae-5b5410e09820.png)
 - spring-security 에 의해 암호화된 비밀번호가 DB에 저장되므로 DB데이터로는 기존 비밀번호를 찾을수 없기 때문에 메일로 임시 비밀번호를 발송하여 그 번호로 로그인 후 회원이 직접 수정할수 있도록 구현 
-- 가입시 입력한 이메일을 통한 인증
-- 비밀번호의 경우 spring-
-## 
 *****
 # 고객센터
 ![1 0-비로그인-faq](https://user-images.githubusercontent.com/107594290/189573281-df773a05-8eea-4102-8e82-ca63f56a5adf.png)
