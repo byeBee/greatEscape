@@ -51,5 +51,6 @@ public String getListBySearch(Map<String, String> map) {
 - 카테고리별로 버튼 클릭시 해당 내용만 나오도록 구성
 ![1 4검색기능](https://user-images.githubusercontent.com/107594290/189574087-6f065915-d0ec-422d-a3f8-04e7b6adb26e.png)
 - 통합검색으로 FAQ제목과 내용 중 키워드가 포함되면 검색결과에 포함되도록 구현
+![x클릭](https://user-images.githubusercontent.com/107594290/189574531-f8deca15-cddc-4e1a-8e07-bfb035d668ad.png)
 ![2 4faq삭제](https://user-images.githubusercontent.com/107594290/189574168-69151f75-10be-4f10-9f36-9986725670b4.png)
--관리자의 경우에만 게시글 추가,삭제가 가능
+- 관리자의 경우에만 게시글 추가, 삭제가 가능 [X]클릭시 Modal창을 띄워주고 삭제 클릭시 삭제
