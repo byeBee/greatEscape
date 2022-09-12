@@ -75,27 +75,28 @@ public String getListBySearch(Map<String, String> map) {
 ![2 4faq삭제](https://user-images.githubusercontent.com/107594290/189574168-69151f75-10be-4f10-9f36-9986725670b4.png)
 - 관리자의 경우에만 게시글 추가, 삭제가 가능 [X]클릭시 Modal창을 띄워주고 삭제 클릭시 삭제
 ## 질문과답변
+### 관리자 로그인
 ![질문답변](https://user-images.githubusercontent.com/107594290/189583251-d1413b36-5f6a-41ad-9f19-ccd59594b351.png)
-- selectbox에서 확인중, 답변완료를 선택하면 해당 글만 표시되도록 구현
+### 일반회원 로그인
+- ![문답내꺼아님안보여](https://user-images.githubusercontent.com/107594290/189586688-dcf2f64b-a4fe-4594-ba46-73b3a4b01ec8.png)
 - 위에서 3개의 글까지는 공지사항을 최신순으로 보여주도록 구현
+- selectbox에서 확인중, 답변완료를 선택하면 해당 글만 표시되도록 구현
+- 관리자, 작성자 본인 외에는 글을 확인할수 없도록 구현
 - jstl function 라이브러리를 이용해 작성자의 이름을 처음과 끝글자만 표시되고, 가운데는 * 마스킹되도록 구현 
 - jstl formatter 라이브러리를 이용해 작성일을 요일까지만 표시(DB에서는 TIMESTAMP, java에서는 Date로 저장)
+### 해당글 상세보기
 ![질문답변상세](https://user-images.githubusercontent.com/107594290/189584053-9666e33c-6ab8-4982-be55-427d0c30be97.png)
 ![답변달린글](https://user-images.githubusercontent.com/107594290/189584368-099a800c-b593-4c09-b2aa-bcf08c1ad477.png)
-- 관리자의 경우에만 답글을 달수 있는 에디터가 표시되고, 등록을 클릭시 해당 글에 바로 표시되도록 AJAX를 통해 구현
+- 관리자의 경우에만 답글을 달수 있는 에디터가 표시되고, 등록을 클릭시 해당 글에 바로 표시되도록 AJAX로 리스트를 받아오도록 구현
+- 관리자의 답이 달리면 카테고리를 확인중->답변완료로 변경
 + Controller
 ```java
-@PostMapping("comment")
-public String addComment(@RequestParam("qna_num")int qna_num, @RequestParam("qna_answer")String qna_answer,
-			@RequestParam("comment_writer")String comment_writer) throws Exception{
+@GetMapping("getCommentList")
+@ResponseBody
+public List<CommentVO> getCommentList(@RequestParam("qna_num")int qna_num)throws Exception{
 	CommentVO vo= new CommentVO();
 	vo.setQna_num(qna_num);
-	vo.setQna_answer(qna_answer);
-	vo.setComment_writer(comment_writer);
-	bs.addComment(vo);
-	bs.updateQNAanswer(vo);
-	String redirectURL="redirect:qnaDetail?qna_num="+qna_num;
-	return redirectURL;
+	return bs.getCommentList(qna_num);
 }
 ```
 + javascript
@@ -121,4 +122,6 @@ function getCommentList(){
 		});//ajax			
 	}
 ```
+### 질문글쓰기, 나의 글 보기
+
 ## 공지사항
