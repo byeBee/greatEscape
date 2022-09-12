@@ -48,3 +48,5 @@ public String getListBySearch(Map<String, String> map) {
 ![1 0-비로그인-faq](https://user-images.githubusercontent.com/107594290/189573281-df773a05-8eea-4102-8e82-ca63f56a5adf.png)
 - 헤더의 고객센터 클릭시 자주묻는질문 게시판으로 이동
 - 카테고리별로 버튼 클릭시 해당 내용만 나오도록 구성
+![메뉴이동](https://user-images.githubusercontent.com/107594290/189573647-3a3bed83-63fa-4a08-9aae-3851e5326d10.png)
+- 관리자계정으로 로그인한 경우에만 새롭게 글을 추가할수 있도록 jsp구현
