@@ -8,7 +8,8 @@
 + STS 3.0 
 ****
 
-## 메인페이지
+<h2 style="color:red;">메인페이지</h2>
+
 ![mainpage](https://user-images.githubusercontent.com/107594290/189569907-562287e8-b8be-4efc-b32d-7726eb0d78c2.png)
 - 헤더부분의 [로그아웃 관리자페이지] 부분은 관리자, 일반회원, 비로그인 여부에따라 변경되도록 jstl core 라이브러리를 이용해 jsp페이지 구성
 - 헤더의 각 부분을 클릭하면 해당하는 페이지로 이동할수 있도록 Controller와 View페이지를 구성
@@ -100,27 +101,27 @@ public List<CommentVO> getCommentList(@RequestParam("qna_num")int qna_num)throws
 }
 ```
 + javascript
-```java
+```javascript
 function getCommentList(){
-		var qna_num= $('input[name=qna_num]').val();
-		$.ajax({
-			type: 'GET', url:"getCommentList", data:{"qna_num":qna_num},
-			beforeSend : function(xhr) { 
-				xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
-			}, success: function(result) {
-				for(var i=0; i<result.length; i++){
-					var str='<div class="comment">';
-					str += '관리자 답변';
-					str += '</div><div>&nbsp;&nbsp;&nbsp;';
-					str += result[i].qna_answer;
-					str += '</div><hr/>';
-					$("#commentList").append(str);
-				}
-			},error: function(err){
-				console.log(err);
-			} 
-		});//ajax			
-	}
+	var qna_num= $('input[name=qna_num]').val();
+	$.ajax({
+		type: 'GET', url:"getCommentList", data:{"qna_num":qna_num},
+		beforeSend : function(xhr) { 
+			xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
+		}, success: function(result) {
+			for(var i=0; i<result.length; i++){
+				var str='<div class="comment">';
+				str += '관리자 답변';
+				str += '</div><div>&nbsp;&nbsp;&nbsp;';
+				str += result[i].qna_answer;
+				str += '</div><hr/>';
+				$("#commentList").append(str);
+			}
+		},error: function(err){
+			console.log(err);
+		} 
+	});//ajax			
+}
 ```
 ### 질문글쓰기, 나의 글 보기
 ![로그인필요함](https://user-images.githubusercontent.com/107594290/189587552-2f67df08-c808-4203-9ee3-beb61421068e.png)
