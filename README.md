@@ -3,7 +3,8 @@
 #### 프로젝트 개발환경
 + Mybatis ORM 사용
 + spring-security 적용
-+ Springframework
++ Springframework v5.3.21
++ My-SQL v8.0.29
 ****
 
 ## 메인페이지
@@ -49,10 +50,15 @@ public String getListBySearch(Map<String, String> map) {
 ```
 *****
 # 회원관리
-## 로그인
-
+## 로그인 및 회원가입
+![로그인](https://user-images.githubusercontent.com/107594290/189579119-58b77d76-02b6-456e-97d9-ad91147d0a06.png)
+![회원가입](https://user-images.githubusercontent.com/107594290/189579142-4abcb861-8ddf-430c-bfcb-1147e8a84e41.png)
+- DB에서 ID 중복검사및 비밀번호 등 유효성검사
+- DAUM 주소찾기 API 적용
 ## 아이디비밀번호찾기 
 
+![비번찾기](https://user-images.githubusercontent.com/107594290/189579300-4fe5e649-2503-4b76-b9ae-5b5410e09820.png)
+- spring-security 에 의해 암호화된 비밀번호가 DB에 저장되므로 DB데이터로는 기존 비밀번호를 찾을수 없기 때문에 메일로 임시 비밀번호를 발송하여 그 번호로 로그인 후 회원이 직접 수정할수 있도록 구현 
 - 가입시 입력한 이메일을 통한 인증
 - 비밀번호의 경우 spring-
 ## 
