@@ -118,4 +118,9 @@ function getCommentList(){
 
 ## 공지사항
 
-##### 위 게시판들과 기능적으로는 동일함
+##### - 위 게시판들과 기본적인 기능은 동일함
+![1 0공지첫화면](https://user-images.githubusercontent.com/107594290/190190179-38d13e26-50e6-463c-b6dc-8079fe3c1bb0.png)
+- 관리자가 글 작성시 파일 업로드 가능, 상세보기에서 첨부파일 다운로드 가능
+ ![1 2 상세보기](https://user-images.githubusercontent.com/107594290/190190584-a71f0a8d-b67e-48d3-a58b-5bef2bbf3b6f.png)
+![1 3첨부파일 다운로드](https://user-images.githubusercontent.com/107594290/190190591-95ef1fda-2725-434e-a5a9-93b49f2ac492.png)
+
