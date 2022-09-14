@@ -1,68 +1,33 @@
 # greatEscape
-### Springframework 기반 여행사 웹페이지 구현
-#### 프로젝트 개발환경
-+ Mybatis ORM 사용
-+ spring-security 적용
-+ Springframework v5.3.21
-+ My-SQL v8.0.29
-+ STS 3.0 
+### 프로젝트 개요
+#### 프로젝트 명 : GreatEscape 
+- 인원: 4명
+- 제작 기간 : 2022-08-08 ~ 2022-09-04 (약 26일)
+- 사용 기술 : Java / JavaScriptES6 / HTML5 / CSS3 / My-SQL / STS3
+- 주요 기능  
+	+ 회원가입,회원,비회원 예약기능 
+	+ 관리자계정으로 상품등록,예약관리,웹사이트 관리기능
+	+ 고객센터(자주묻는질문,공지사항,질문과답변 게시판) 
+	+ 여행상품 검색 기능 및 기타 기본적인 여행사 웹사이트에서 필요한 기능들
+#### 제작 목적 
+- 코로나19로 인해 침체 되어있던 여행시장에서 조금씩 규제가 완화되고 국제선 운행이 시작되며, '갇혀있던 일상에서 도망가자' 라는 의미에서 여행사 웹페이지를 제작 
+- 담당 역할 : DB 테이블 설정 및 검수, 고객센터 파트 백엔드 개발 및 프론트 수정, 오류테스트
+#### 개발환경
+- 개발Tool
+
+![개발도구](https://user-images.githubusercontent.com/107594290/190176165-857319b3-cf72-4468-96cc-b6204d7f90e6.png)
+- 개발언어
+
+![개발언어](https://user-images.githubusercontent.com/107594290/190176200-9a766435-0cd9-4121-9ea7-5f65d4d1cf17.png)
+- 프로젝트 관리
+
+![프로젝트관리](https://user-images.githubusercontent.com/107594290/190176214-dcf1e345-f795-49d6-9e74-628b53e4c1ae.png)
 ****
-
+## 주요 개발 담당: 고객센터 파트(자주묻는질문, 질문과 답변, 공지사항)
+- 
 <h2 style="color:red;">메인페이지</h2>
+![localhost_8080_greatescape_](https://user-images.githubusercontent.com/107594290/190179953-aba14960-2007-46cc-a385-279ac72695f0.png)
 
-![mainpage](https://user-images.githubusercontent.com/107594290/189569907-562287e8-b8be-4efc-b32d-7726eb0d78c2.png)
-- 헤더부분의 [로그아웃 관리자페이지] 부분은 관리자, 일반회원, 비로그인 여부에따라 변경되도록 jstl core 라이브러리를 이용해 jsp페이지 구성
-- 헤더의 각 부분을 클릭하면 해당하는 페이지로 이동할수 있도록 Controller와 View페이지를 구성
-- 여행상품 검색에는 Provider를 이용해 동적쿼리를 구성하여 각각의 조건을 모두 고려할수 있게 구성
-```java
-public String getListBySearch(Map<String, String> map) {
-	SQL sql = new SQL();
-	sql.SELECT("*");
-	sql.FROM("tbl_product");
-	String country = map.get("country");
-	if (country != null && !country.equals("")) {
-		sql.WHERE("product_country LIKE CONCAT('%', #{country}, '%')");
-	}
-	String departure = map.get("departure");
-	if (departure != null && !departure.equals("")) {
-		sql.WHERE("DATE(product_departure) = DATE(#{departure})");
-	}
-	String plan = map.get("plan");
-	if (plan != null && !plan.equals("")) {
-		sql.WHERE("product_plan = #{plan}");
-	}
-	String seat = map.get("seat");
-	if (seat != null && !seat.equals("")) {
-		sql.WHERE("(product_seat * 4) >= #{seat}");
-	}
-	String city = map.get("city");
-	if (city != null && !city.equals("")) {
-		sql.WHERE("product_city LIKE CONCAT('%', #{city}, '%')");
-	}
-	String money = map.get("money");
-	if (money != null && !money.equals("")) {
-		if (seat != null && !seat.equals("")) {
-			sql.WHERE("product_adult * #{seat} <= #{money}");
-		} else {
-			sql.WHERE("product_adult <= #{money}");
-		}
-	}
-	return sql.toString();
-}
-```
-*****
-# 회원관리
-## 로그인 및 회원가입
-![로그인](https://user-images.githubusercontent.com/107594290/189579119-58b77d76-02b6-456e-97d9-ad91147d0a06.png)
-![회원가입](https://user-images.githubusercontent.com/107594290/189579142-4abcb861-8ddf-430c-bfcb-1147e8a84e41.png)
-- DB에서 ID 중복검사및 비밀번호 등 유효성검사
-- DAUM 주소찾기 API 적용
-## 아이디비밀번호찾기 
-### 아이디찾기
-![찾기결과](https://user-images.githubusercontent.com/107594290/189580154-d183ae1c-28ac-4389-b809-efa98e74bfdf.png)
-### 비밀번호 찾기
-![비번찾기](https://user-images.githubusercontent.com/107594290/189579300-4fe5e649-2503-4b76-b9ae-5b5410e09820.png)
-- spring-security 에 의해 암호화된 비밀번호가 DB에 저장되므로 DB데이터로는 기존 비밀번호를 찾을수 없기 때문에 메일로 임시 비밀번호를 발송하여 그 번호로 로그인 후 회원이 직접 수정할수 있도록 구현 
 *****
 # 고객센터
 ## 자주묻는질문
