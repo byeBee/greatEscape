@@ -29,16 +29,25 @@
 
 *****
 # 고객센터
+__기본적으로 모든 게시판에 페이징처리 작업__
 ## 자주묻는질문
-![1 0-비로그인-faq](https://user-images.githubusercontent.com/107594290/189573281-df773a05-8eea-4102-8e82-ca63f56a5adf.png)
 - 헤더의 고객센터 클릭시 자주묻는질문 게시판으로 이동
-![메뉴이동](https://user-images.githubusercontent.com/107594290/189573647-3a3bed83-63fa-4a08-9aae-3851e5326d10.png)
+![1 0-비로그인-faq](https://user-images.githubusercontent.com/107594290/189573281-df773a05-8eea-4102-8e82-ca63f56a5adf.png)
+
 - 카테고리별로 버튼 클릭시 해당 내용만 나오도록 구성
-![1 4검색기능](https://user-images.githubusercontent.com/107594290/189574087-6f065915-d0ec-422d-a3f8-04e7b6adb26e.png)
+
+![메뉴이동](https://user-images.githubusercontent.com/107594290/189573647-3a3bed83-63fa-4a08-9aae-3851e5326d10.png)
+
 - 통합검색으로 FAQ제목과 내용 중 키워드가 포함되면 검색결과에 포함되도록 구현
+
+![1 4검색기능](https://user-images.githubusercontent.com/107594290/189574087-6f065915-d0ec-422d-a3f8-04e7b6adb26e.png)
+- 관리자의 경우에만 게시글 추가, 삭제가 가능 [X]클릭시 Modal창을 띄워주고 삭제 클릭시 삭제<br/>
+__새 게시글__
+![2 2faq새글](https://user-images.githubusercontent.com/107594290/190187306-83be63e9-19bc-40cd-bedc-5560e9bda274.png)
+__글 삭제__
 ![x클릭](https://user-images.githubusercontent.com/107594290/189574531-f8deca15-cddc-4e1a-8e07-bfb035d668ad.png)
 ![2 4faq삭제](https://user-images.githubusercontent.com/107594290/189574168-69151f75-10be-4f10-9f36-9986725670b4.png)
-- 관리자의 경우에만 게시글 추가, 삭제가 가능 [X]클릭시 Modal창을 띄워주고 삭제 클릭시 삭제
+
 <hr/>
 
 ## 질문과답변
