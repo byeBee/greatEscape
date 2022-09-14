@@ -1,4 +1,4 @@
-# reatEscape
+# GreatEscape
 ### 프로젝트 개요
 #### 프로젝트 명 : GreatEscape 
 - 인원: 4명
